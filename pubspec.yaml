@@ -1,0 +1,5 @@
+name: count_complete_subarrays_array
+environment:
+  sdk: '^3.7.0'
+dependencies:
+  collection: ^1.17.1  # Or latest version
