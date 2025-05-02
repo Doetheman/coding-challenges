@@ -294,6 +294,53 @@ int lengthOfLongestSubstring(String s) {
   return maxLength;
 }
 
+// 153. Find Minimum in Rotated Sorted Array
+// Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+
+// [4,5,6,7,0,1,2] if it was rotated 4 times.
+// [0,1,2,4,5,6,7] if it was rotated 7 times.
+
+// Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+
+// Given the sorted rotated array nums of unique elements, return the minimum element of this array.
+
+// You must write an algorithm that runs in O(log n) time.
+
+// Example 1:
+
+// Input: nums = [3,4,5,1,2]
+// Output: 1
+// Explanation: The original array was [1,2,3,4,5] rotated 3 times.
+
+int findMin(List<int> nums) {
+  // This is a binary search problem
+  // We need to find the minimum element in the array
+  // We can use a binary search to find the minimum element
+  int left = 0;
+  int right = nums.length - 1;
+  while (left < right) {
+    int mid = left + (right - left) ~/ 2;
+    if (nums[mid] < nums[right]) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return nums[right];
+
+  // int left = 0;
+  // int right = nums.length - 1;
+  // while (left < right) {
+  //   int mid = left + (right - left) ~/ 2;
+  //   if (nums[mid] < nums[left]) {
+  //     left = mid + 1;
+  //   } else {
+  //     left = mid;
+  //   }
+  // }
+  // return nums[right];
+}
+
 void main() {
   // final nums = [1, 3, 1, 2, 2];
   // countCompleteSubarrays(nums);
@@ -322,5 +369,6 @@ void main() {
   // lengthOfLongestSubstring('aab');
   //print(topKFrequent([1, 1, 1, 2, 2, 3], 2)); // Output: [1, 2]
   //  print(kLeastFrequent([1, 1, 1, 2, 2, 3], 2)); // Output: [2, 3]
-  print(kLeastFrequent([3, 1, 2, 4, 1, 1, 2], 2)); // Output: [3, 4]
+  // print(kLeastFrequent([3, 1, 2, 4, 1, 1, 2], 2)); // Output: [3, 4]
+  print(findMin([3, 4, 5, 1, 2]));
 }
